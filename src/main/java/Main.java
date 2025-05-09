@@ -1,5 +1,4 @@
-package server;
-
+import server.Server;
 import server.dataaccess.DataAccessException;
 
 public class Main {

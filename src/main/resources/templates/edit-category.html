@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Category</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1 th:text="'Edit Category: ' + ${category.name}"></h1>
+
+<div class="card">
+    <form th:action="${editCategoryLink}" method="post">
+        <input type="hidden" name="_method" value="put"/> <!-- Simulate PUT -->
+        <input type="text" name="name" th:value="${category.name}" required />
+        <input type="text" name="max" th:value="${category.max}" required />
+        <button type="submit">Update Category</button>
+    </form>
+</div>
+
+<a th:href="${budgetLink}">Back to Budget</a>
+</body>
+</html>

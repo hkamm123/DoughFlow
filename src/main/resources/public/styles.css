@@ -1,0 +1,113 @@
+/* Reset some default styles */
+body, h1, h2, ul, li, p, form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+/* Headings */
+h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem;
+    color: #34495e;
+}
+
+/* Budget list */
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin: 0.5rem 0;
+}
+
+a {
+    text-decoration: none;
+    color: #2980b9;
+    font-weight: bold;
+    padding: 0.2rem 0.2rem;
+    border: 2px solid #007BFF;
+    border-radius: 0.5rem;
+}
+
+a.budget-link {
+    border: none;
+}
+
+/* edit button */
+a.edit {
+    margin-left: 1rem;
+}
+
+/* delete buttons */
+a.delete-button {
+    border: 2px solid #e53935;
+    color: #e53935;
+}
+
+/* category overview */
+.category-info {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #34495e;
+}
+
+a:hover {
+    color: #1abc9c;
+}
+
+/* Forms */
+form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 400px;
+}
+
+input, select, button {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #2ecc71;
+}
+
+/* Expense tables */
+table.expenses td, table.expenses th {
+    padding: 0.2rem 1.5rem; /* top-bottom | left-right */
+    margin-left: 20px;
+}
+
+/* Card-style container (optional) */
+.card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}

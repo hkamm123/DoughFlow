@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${budget.title}">Budget Details</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1 th:text="${budget.title}">Budget Title</h1>
+
+<div class="card">
+  <h2>Add an Expense</h2>
+  <form th:action="${addExpenseLink}" method="post">
+    <input type="text" id="amount" name="amount" placeholder="Amount" required>
+    <input type="text" id="description" name="description" placeholder="Description">
+    <select id="categoryName" name="categoryName" required>
+      <option value="" disabled selected>Select a Category</option>
+      <option th:each="category : ${budget.categories}"
+              th:value="${category.name}"
+              th:text="${category.name}"></option>
+    </select>
+
+    <button type="submit">Add Expense</button>
+  </form>
+</div>
+
+<div class="card">
+  <ul>
+    <li th:each="category, iterStat : ${budget.categories}">
+      <span th:style="'color: hsl(' + (${category.percentRemaining} * 120) + ', 100%, 35%)'"
+            class="category-info"
+            th:text="${category.name + ': ' + category.balance + '/' + category.max + ' available'}">Category Name: spent/allotted</span>
+      <a class="edit" th:href="${editCategoryLinks[iterStat.index]}">Edit</a>
+      <a href="#" onclick="toggleExpenses(this); return false;"
+      th:if="${category.listExpenses().size() > 0}">Toggle Expenses</a>
+      <a class="delete-button" th:href="${editCategoryLinks[iterStat.index] + '/delete'}">Delete</a>
+      <table class="expenses" th:if="${category.listExpenses().size() > 0}">
+        <thead>
+        <tr>
+          <th>Amount</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="expense, iterStat: ${category.listExpenses()}">
+          <td th:text="${expense.amount}">Amount</td>
+          <td th:text="${expense.description}">Description</td>
+          <td><a class="delete-button" th:href="@{{title}/categories/{category}/expenses/{index}/delete(
+          title=${budget.title},
+          category=${category.name},
+          index=${iterStat.index})}">Delete</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Add a Category</h2>
+  <form th:action="${addCategoryLink}" method="post">
+    <input type="text" name="name" placeholder="Category Name" required>
+    <input type="text" name="max" placeholder="Max Funds" required>
+    <button type="submit">Add Category</button>
+  </form>
+</div>
+
+<a href="/budgets">Back to Budgets</a>
+</body>
+
+<script>
+  function toggleExpenses(button) {
+    const container = button.nextElementSibling;
+    if (container.style.display === "none") {
+      container.style.display = "block";
+    } else {
+      container.style.display = "none";
+    }
+  }
+</script>
+</html>

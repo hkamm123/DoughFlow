@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My DoughFlow Budgets</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+<div class="card">
+    <h1>Budgets</h1>
+    <ul>
+        <li th:each="budget, iterStat : ${budgets}">
+            <a class="budget-link" th:href="${budgetLinks[iterStat.index]}"
+               th:text="${budget.title}"></a>
+            <a class="delete-button" th:href="${budgetLinks[iterStat.index] + '/delete'}">
+                Delete</a>
+        </li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Create a New Budget</h2>
+    <form action="/budgets" method="post">
+        <label for="budgetTitle">Budget Title:</label>
+        <input type="text" id="budgetTitle" name="budgetTitle" required>
+        <button type="submit">Add Budget</button>
+    </form>
+</div>
+</body>
+</html>

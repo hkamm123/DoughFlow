@@ -67,6 +67,16 @@ a.toggle-button {
     font-weight: bold;
     font-size: 1.2rem;
     color: #34495e;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.category-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* or use flex-start if you want them grouped */
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
 a:hover {

@@ -27,14 +27,18 @@
 <div class="card">
   <ul>
     <li th:each="category, iterStat : ${budget.categories}">
-      <span th:style="'color: hsl(' + (${category.percentRemaining} * 120) + ', 100%, 35%)'"
-            class="category-info"
-            th:text="${category.name + ': ' + category.balance + '/' + category.max + ' available'}">Category Name: spent/allotted</span>
-      <a class="edit" th:href="${editCategoryLinks[iterStat.index]}">Edit</a>
-      <a class="delete-button" th:href="${editCategoryLinks[iterStat.index] + '/delete'}">&#128465;</a>
-      <a class ="toggle-button" href="#" onclick="toggleExpenses(this); return false;"
-      th:if="${category.listExpenses().size() > 0}">&darr;</a>
-      <table class="expenses" th:if="${category.listExpenses().size() > 0}">
+      <div class="category-row">
+        <span th:style="'color: hsl(' + (${category.percentRemaining} * 120) + ', 100%, 35%)'"
+              class="category-info"
+              th:text="${category.name + ': ' + category.balance + '/' + category.max}">Category Name: spent/allotted
+        </span>
+        <a class ="toggle-button" href="#" onclick="toggleExpenses('expenses-[[${iterStat.index}]]'); return false;"
+              th:if="${category.listExpenses().size() > 0}">&darr;
+        </a>
+        <a class="edit" th:href="${editCategoryLinks[iterStat.index]}">Edit</a>
+        <a class="delete-button" th:href="${editCategoryLinks[iterStat.index] + '/delete'}">&#128465;</a>
+      </div>
+      <table id="expenses-[[${iterStat.index}]]" class="expenses" th:if="${category.listExpenses().size() > 0}">
         <thead>
         <tr>
           <th>Amount</th>
@@ -70,12 +74,10 @@
 </body>
 
 <script>
-  function toggleExpenses(button) {
-    const container = button.nextElementSibling;
-    if (container.style.display === "none") {
-      container.style.display = "block";
-    } else {
-      container.style.display = "none";
+  function toggleExpenses(id) {
+    const table = document.getElementById(id);
+    if (table) {
+      table.style.display = table.style.display === "none" ? "table" : "none";
     }
   }
 </script>

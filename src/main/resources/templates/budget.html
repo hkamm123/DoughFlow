@@ -31,9 +31,9 @@
             class="category-info"
             th:text="${category.name + ': ' + category.balance + '/' + category.max + ' available'}">Category Name: spent/allotted</span>
       <a class="edit" th:href="${editCategoryLinks[iterStat.index]}">Edit</a>
-      <a class="delete-button" th:href="${editCategoryLinks[iterStat.index] + '/delete'}">Delete</a>
+      <a class="delete-button" th:href="${editCategoryLinks[iterStat.index] + '/delete'}">&#128465;</a>
       <a href="#" onclick="toggleExpenses(this); return false;"
-      th:if="${category.listExpenses().size() > 0}">Toggle Expenses</a>
+      th:if="${category.listExpenses().size() > 0}">&darr;</a>
       <table class="expenses" th:if="${category.listExpenses().size() > 0}">
         <thead>
         <tr>

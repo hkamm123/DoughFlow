@@ -28,7 +28,7 @@
   <ul>
     <li th:each="category, iterStat : ${budget.categories}">
       <div class="category-row">
-        <span th:style="'color: hsl(' + (${category.percentRemaining} * 120) + ', 100%, 35%)'"
+        <span th:style="'color: hsl(' + (${category.percentRemaining} * 120) + ', 100%, 35%); font-size: 1.5rem;'"
               class="category-info"
               th:text="${category.name + ': ' + category.balance + '/' + category.max}">Category Name: spent/allotted
         </span>

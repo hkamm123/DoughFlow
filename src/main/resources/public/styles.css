@@ -15,12 +15,12 @@ body {
 
 /* Headings */
 h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     color: #2c3e50;
 }
 
 h2 {
-    font-size: 1.4rem;
+    font-size: 2rem;
     margin: 0 0 1rem;
     color: #34495e;
 }
@@ -65,9 +65,9 @@ a.toggle-button {
 /* category overview */
 .category-info {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #34495e;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
     flex-grow: 1;
 }
 
@@ -89,14 +89,14 @@ form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-width: 400px;
+    max-width: 800px;
 }
 
 input, select, button {
     padding: 0.5rem;
     border-radius: 4px;
     border: 1px solid #ccc;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 button {
@@ -115,6 +115,7 @@ button:hover {
 table.expenses td, table.expenses th {
     padding: 0.2rem 1.5rem; /* top-bottom | left-right */
     margin-left: 20px;
+    font-size: 1.5rem;
 }
 
 /* Card-style container (optional) */

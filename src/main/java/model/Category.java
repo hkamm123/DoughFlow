@@ -74,7 +74,7 @@ public class Category {
     }
 
     private void setBalance() {
-        balance = max + received - spent;
+        balance = round(max + received - spent);
         if (max > 0) {
             percentRemaining = balance / max;
         } else {
@@ -83,6 +83,10 @@ public class Category {
         if (percentRemaining < 0) {
             percentRemaining = 0;
         }
+    }
+
+    private double round(double value) {
+        return Double.parseDouble(String.format("%.2f", value));
     }
 
     public double getBalance() {
